@@ -1,0 +1,12 @@
+---
+Name: TableTest
+After:
+  - 'framework/*'
+  - 'cms/*'
+---
+File:
+  extensions:
+    - File_TableTest
+Image:
+  extensions:
+    - Image_TableTest
