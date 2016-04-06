@@ -7,6 +7,26 @@ class TableTestTask extends BuildTask {
 	protected $description = 'Report on success of default value population on sub-class tables';
  
 	protected $enabled = true;
+		
+	public static $types = array(
+		'Boolean', 
+		'Date', 
+		'Decimal', 
+		'Float', 
+		'Int', 
+		'Money', 
+		'Time', 
+		'Year', 
+		'Currency', 
+		'SS_Datetime', 
+		'Text', 
+		'Varchar', 
+		'Double', 
+		'Enum', 
+		'HTMLText', 
+		'HTMLVarchar', 
+		'Percentage'
+	);
  
 	function run($request) {
 
@@ -18,29 +38,9 @@ class TableTestTask extends BuildTask {
 
 		$images = Image::get();
 		
-		$types = array(
-			'Boolean', 
-			'Date', 
-			'Decimal', 
-			'Float', 
-			'Int', 
-			'Money', 
-			'Time', 
-			'Year', 
-			'Currency', 
-			'SS_Datetime', 
-			'Text', 
-			'Varchar', 
-			'Double', 
-			'Enum', 
-			'HTMLText', 
-			'HTMLVarchar', 
-			'Percentage'
-		);
-		
 		foreach ($images as $i) {
 			echo "<br><br><b>$i->Title</b> :";
-			foreach ($types as $t) {
+			foreach (TableTestTask::$types as $t) {
 				$filePropertyName = 'TestFile' . $t . 'Property';
 				$imagePropertyName = 'TestImage' . $t . 'Property';
 				$colour = ($i->$filePropertyName === $i->$imagePropertyName) ? 'green' : 'red';

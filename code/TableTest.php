@@ -22,12 +22,16 @@ class File_TableTest extends DataExtension {
 			'TestFilePercentageProperty' => 'Percentage($precision = 3)'
 	);
 	
-/*
 	public function updateCMSFields(FieldList $fields) {
-		$fields->push(CheckboxField::create('TestFileBoolProperty'));
-		$fields->push(TextField::create('TestFileTextProperty'));
+		foreach (TableTestTask::$types as $t) {
+			$f = $this->owner->dbObject('TestFile' . $t . 'Property')->scaffoldFormField();
+      if ($fields->hasTabSet()) {
+          $fields->addFieldToTab('Root.Main', $f);
+      } else {
+          $fields->add($f);
+      }
+		}
 	}
-*/
 }
 
 class Image_TableTest extends DataExtension {
@@ -52,10 +56,14 @@ class Image_TableTest extends DataExtension {
 			'TestImagePercentageProperty' => 'Percentage($precision = 3)'
 	);
 	
-/*
 	public function updateCMSFields(FieldList $fields) {
-		$fields->push(CheckboxField::create('TestImageBoolProperty'));
-		$fields->push(TextField::create('TestImageTextProperty'));
+		foreach (TableTestTask::$types as $t) {
+			$f = $this->owner->dbObject('TestImage' . $t . 'Property')->scaffoldFormField();
+      if ($fields->hasTabSet()) {
+          $fields->addFieldToTab('Root.Main', $f);
+      } else {
+          $fields->add($f);
+      }
+		}
 	}
-*/
 }
